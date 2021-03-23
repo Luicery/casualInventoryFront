@@ -5,6 +5,9 @@ function Login() {
   const [password, setPassword] = useState("");
   function loginSubmit(event) {
     event.preventDefault();
+    if(email === "" || password === "") {
+      return console.log("Login not filled in")
+    }
     console.log("yes");
     requests.login(email, password).then(res => {
       console.log("asd")
@@ -15,10 +18,9 @@ function Login() {
       <form onSubmit={loginSubmit}>
         <span>Email:</span>
         <input name="email" type="email" placeholder="Email" onChange={(event) => setEmail(event.target.value)}></input>
-        <span>Password:</span>
+        <br/><span>Password:</span>
         <input name="password" type="password" placeholder="Password" onChange={(event) => setPassword(event.target.value)}></input>
-        {email !== "" && password !== "" && <input type="submit" value="Login"></input>}
-        {(email === "" || password === "") && <input type="submit" value="Login"></input>}
+        <input type="submit" value="Login"></input>}
       </form>
     </div>
   )

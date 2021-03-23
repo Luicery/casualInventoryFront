@@ -13,6 +13,7 @@ import Signup from "./Signup"
 import Company from "./Company"
 import Location from "./Location"
 import Stock from "./Stock"
+// Maybe just delete the stock link and make it apart of location
 function Main() {
   return(
     <div>
@@ -22,9 +23,9 @@ function Main() {
           <Route exact path="/" component={Home}></Route>
           <Route exact path="/login" component={Login}></Route>
           <Route exact path="/signup" component={Signup}></Route>
-          <Route exact path="/:company" component={Company}></Route>
-          <Route exact path="/:company/:location" component={Location}></Route>
-          <Route exact path="/:company/:location/:stock" component={Stock}></Route>
+          <Route exact path="/company/:company" component={Company}></Route>
+          <Route exact path="/company/:company/:location" component={Location}></Route>
+          <Route exact path="/company/:company/:location/stock" component={Stock}>{}</Route>
         </Switch>
       </Router>
     </div>
