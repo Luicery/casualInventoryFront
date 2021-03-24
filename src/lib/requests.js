@@ -28,5 +28,11 @@ export default {
   // Tester below real above
   getLocation(locationId) {
     return axios.get(`http://localhost:3000/locationprofile/${locationId}`)
+  },
+  newLocation(address, phone, manager, isSupplier) {
+    return axios.post(`http://localhost:3000/locations`, { location:{address:address, phone:phone, manager:manager, is_supplier:isSupplier}, headers: { 'Authorization': token } })
+  },
+  newItem() {
+
   }
 }
