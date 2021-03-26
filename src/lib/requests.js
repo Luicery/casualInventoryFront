@@ -32,7 +32,10 @@ export default {
   newLocation(address, phone, manager, isSupplier) {
     return axios.post(`http://localhost:3000/locations`, { location:{address:address, phone:phone, manager:manager, is_supplier:isSupplier}, headers: { 'Authorization': token } })
   },
-  newItem() {
-
+  changeItem(locationId, amount, id) {
+    return axios.post(`http://localhost:3000/changeItem`, { item: {recepLocationAddress:locationId, amount:amount, id:id}, headers: {"Authorization": token}})
+  },
+  deleteItem(id) {
+    return axios.post(`http://localhost:3000/deleteItem`, {item: {id:id}, headers: {"Authorization": token}})
   }
 }
