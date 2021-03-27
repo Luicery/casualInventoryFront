@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react"
 import requests from "../lib/requests"
-function Signup() {
+function Signup(props) {
   const [email, setEmail] = useState("")
   const [passwordConfirm, setPasswordConfirm] = useState("")
   const [name, setName] = useState("")
@@ -14,6 +14,7 @@ function Signup() {
     console.log("Valid Signup")
     requests.signup(email, name, address, password).then(res => {
       console.log("asd")
+      props.history.push("/");
     })
   }
   return(

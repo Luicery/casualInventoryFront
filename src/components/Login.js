@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import requests from "../lib/requests"
-function Login() {
+function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   function loginSubmit(event) {
@@ -10,7 +10,7 @@ function Login() {
     }
     console.log("yes");
     requests.login(email, password).then(res => {
-      console.log("asd")
+      props.history.push("/");
     })
   }
   return(
