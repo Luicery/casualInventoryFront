@@ -4,8 +4,9 @@ function Location(props) {
   const [location, setLocation] = useState("");
   const [amount, setAmount] = useState("");
   const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
   const [recepCompany, setRecepCompany] = useState("");
-  const [recepLocationId, setRecepLocationId] = useState("");
+  const [recepLocation, setRecepLocation] = useState("");
   useEffect(() => {
     requests.getLocation(props.match.params.location).then(res => {
       setLocation(res.data)
@@ -20,7 +21,7 @@ function Location(props) {
   }
   function itemTrade(event) {
     event.preventDefault();
-    requests.tradeItem(recepCompany, recepLocationId, props.match.params.location, name, amount).then(res => {
+    requests.tradeItem(recepCompany, recepLocation, props.match.params.location, event.target.name, amount).then(res => {
       return console.log("SUCCESS")
     }).catch(error => {
       return console.log(error)
@@ -32,6 +33,14 @@ function Location(props) {
       console.log("SUCCESS")
     })
   }
+  function itemCreate(event) {
+    event.preventDefault();
+    requests.newItem(props.match.params.location, amount, name, price).then(res => {
+        return console.log("SUCCESS")
+    }).catch(error => {
+      return console.log(error)
+    })
+  }
   return(
     <div>
       {location !== "" && <div>
@@ -41,12 +50,21 @@ function Location(props) {
         Manager:{location.location.manager}<br/>
         Phone:{location.location.phone}<br/>
         <br/>
+        <h2>Create a new item</h2>
+        <form onSubmit={itemCreate}>
+          Name:<input type="string" onChange={(event) => setName(event.target.value)}></input><br/>
+          Amount:<input type="number" onChange={(event) => setAmount(event.target.value)}></input><br/>
+          Price:<input type="number" onChange={(event) => setPrice(event.target.value)}></input><br/>
+          <input type="submit" value="Create item"></input>
+        </form>
         {location.stock.map((x,y) => (
           <div>
-            <h2>Item {y+1}</h2>
-            Name:{x.name}<br/>
+            <h2>{x.name}</h2>
             Amount:{x.amount}<br/>
-            Restock level: {x.restock}<br/>
+            Restock level:{x.restock}<br/>
+            Price:{x.price}<br/>
+            Auto restock:{x.autoRestock}<br/>
+            Last supplier:{x.lastSupplier}<br/>
           <form id={x.id} onSubmit={itemManipulate}>
             <input type="number" onChange={(event) => setAmount(event.target.value)}></input>
             <input type="submit" value="Change item"></input>
@@ -54,13 +72,12 @@ function Location(props) {
           <form id={x.id} onSubmit={itemDelete}>
             <input type="submit" value="Delete item"></input>
           </form><br/>
-          <form id={x.id} onSubmit={itemTrade}>
-            Name:<input type="string" onChange={(event) => setName(event.target.value)}></input><br/>
+          <form id={x.id} name={x.name} onSubmit={itemTrade}>
             Amount:<input type="number" onChange={(event) => setAmount(event.target.value)}></input><br/>
             Recepient Company Name<input type="string" onChange={(event) => setRecepCompany(event.target.value)}></input><br/>
-            Recepient Company Location ID to be changed to address<input type="number" onChange={(event) => setRecepLocationId(event.target.value)}></input><br/>
-            <input type="submit" value="Trade item"></input>
-          </form>
+          Recepient Location Address<input type="string" size="30" placeholder="Number, Example Road, Area" onChange={(event) => setRecepLocation(event.target.value)}></input><br/>
+          <input type="submit" value="Trade item"></input>
+          </form><br/>
           </div>
         ))}
       </div>}

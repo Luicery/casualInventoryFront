@@ -39,6 +39,9 @@ export default {
     return axios.post(`http://localhost:3000/deleteItem`, {item: {id:id}, headers: {"Authorization": token}})
   },
   tradeItem(recepCompany, recepLocationId, locationId, name, amount) {
-    return axios.post(`http:/localhost:3000/tradeItem`, {item: {recepCompany:recepCompany, recepLocationId:recepLocationId, locationId:locationId, name:name, amount:amount},headers: {"Authorization": token}})
+    return axios.post(`http://localhost:3000/tradeItem`, {item: {recepCompany:recepCompany, recepLocationId:recepLocationId, locationId:locationId, name:name, amount:amount},headers: {"Authorization": token}})
+  },
+  newItem(locationId, amount, name, price) {
+    return axios.post(`http://localhost:3000/items`, {item: {amount:amount, name:name, price:price, locationId:locationId}})
   }
 }
