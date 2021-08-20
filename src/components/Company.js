@@ -3,11 +3,10 @@ import requests from "../lib/requests"
 function Company(props) {
   const [company, setCompany] = useState("")
   useEffect(() => {
-    requests.getCompany(props.match.params.company).then(res => {
+    requests.getCompany().then(res => {
       setCompany(res.data)
-      console.log(company)
+      console.log(res.data)
     })
-    console.log(company)
   }, [])
   // Remember the , [] means to only do once when the page loads dont delete it
   return(
@@ -18,9 +17,9 @@ function Company(props) {
         Phone:{company.company.phone}<br/>
         Email:{company.company.email}<br/>
         Name:{company.company.name}
-        {company.locations.map((x,y) => (
+        {company.companyLocation.map((x,y) => (
           <div>
-            <h2 onClick={() => props.history.push(`/company/${company.company.id}/${x.id}`)}>Location {y+1}</h2>
+            <h2 onClick={() => props.history.push(`/company/${x.id}`)}>Location {y+1} (CAN CLICK)</h2>
             Address:{x.address}<br/>
             Phone:{x.phone}<br/>
             Manager:{x.manager}

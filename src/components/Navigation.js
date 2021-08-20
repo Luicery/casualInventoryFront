@@ -4,8 +4,8 @@ function Navigation() {
     <div>
       <nav>
         <a href="/">Home</a><br/>
-        <a href="/login">Login</a><br/>
-        <a href="/signup">Signup</a>
+        {localStorage.jwt === undefined && <a href="/login">Login</a>}<br/>
+        {localStorage.jwt === undefined && <a href="/signup">Signup</a>}
       </nav>
     </div>
   )

@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from "react"
 import requests from "../lib/requests"
+// .catch(err => {props.history.push("/")})
+// console.log(location)
 function Location(props) {
   const [location, setLocation] = useState("");
   const [amount, setAmount] = useState("");
@@ -7,15 +9,17 @@ function Location(props) {
   const [price, setPrice] = useState("");
   const [recepCompany, setRecepCompany] = useState("");
   const [recepLocation, setRecepLocation] = useState("");
+  const [restockPoint, setRestockPoint] = useState("");
+  const [restockTo, setRestockTo] = useState("");
+  const [autoRestock, setAutoRestock] = useState(true);
   useEffect(() => {
     requests.getLocation(props.match.params.location).then(res => {
       setLocation(res.data)
-    }).catch(err => {props.history.push("/")})
-    console.log(location)
+    })
   }, [])
   function itemManipulate(event) {
     event.preventDefault();
-    requests.changeItem(props.match.params.location, amount, event.target.id).then(res => {
+    requests.changeItem(props.match.params.location, parseInt(amount), event.target.id).then(res => {
       console.log("SUCCESS")
     })
   }
@@ -29,13 +33,13 @@ function Location(props) {
   }
   function itemDelete(event) {
     event.preventDefault();
-    requests.deleteItem(event.target.id).then(res => {
+    requests.deleteItem(props.match.params.location ,event.target.id).then(res => {
       console.log("SUCCESS")
     })
   }
   function itemCreate(event) {
     event.preventDefault();
-    requests.newItem(props.match.params.location, amount, name, price).then(res => {
+    requests.newItem(props.match.params.location, amount, name, price, restockPoint, restockTo, autoRestock).then(res => {
         return console.log("SUCCESS")
     }).catch(error => {
       return console.log(error)
@@ -53,8 +57,11 @@ function Location(props) {
         <h2>Create a new item</h2>
         <form onSubmit={itemCreate}>
           Name:<input type="string" onChange={(event) => setName(event.target.value)}></input><br/>
-          Amount:<input type="number" onChange={(event) => setAmount(event.target.value)}></input><br/>
+          Amount:<input type="number"  onChange={(event) => setAmount(event.target.value)}></input><br/>
           Price:<input type="number" onChange={(event) => setPrice(event.target.value)}></input><br/>
+          Auto restock:<input type="checkbox" checked={autoRestock} onChange={() => setAutoRestock(autoRestock ? false : true)}></input><br/>
+        {autoRestock === true && <span>Restock point:<input type="number" value={restockPoint} onChange={(event) => setRestockPoint(event.target.value)}></input><br/>
+      Restock to:<input type="number" value={restockTo} onChange={(event) => setRestockTo(event.target.value)}></input></span>}<br/>
           <input type="submit" value="Create item"></input>
         </form>
         {location.stock.map((x,y) => (
