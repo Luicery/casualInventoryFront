@@ -46,11 +46,6 @@ export default {
     return axios.post(`http://localhost:3000/tradeItem`,{recepCompany:recepCompany, recepLocationId:recepLocationId, locationId:locationId, name:name, amount:amount}, {headers: {"Authorization": token}})
   },
   newItem(locationId, amount, name, price, restockPoint, restockTo, autoRestock) {
-    if(restockPoint >= restockTo) {
-      return "Restock point cannot be the restock target"
-    } else if((restockPoint !== "" && restockTo !== "") && autoRestock === false) {
-      return "Cannot have a restock point and target if you don't want to restock"
-    }
     return axios.post(`http://localhost:3000/items`,{amount:amount, name:name, price:price, locationId:locationId, restockPoint:restockPoint, restockTo:restockTo, autoRestock:autoRestock}, {headers: {"Authorization": token}})
   }
 }

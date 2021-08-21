@@ -17,9 +17,9 @@ function Login(props) {
     <div>
       <form onSubmit={loginSubmit}>
         <span>Email:</span>
-        <input name="email" type="email" placeholder="Email" onChange={(event) => setEmail(event.target.value)}></input>
+        <input name="email" type="email" placeholder="Email" onChange={(event) => setEmail((event.target.value).toLowerCase())}></input>
         <br/><span>Password:</span>
-        <input name="password" type="password" placeholder="Password" onChange={(event) => setPassword(event.target.value)}></input>
+        <input name="password" type="password" placeholder="Password" onChange={(event) => setPassword((event.target.value).toLowerCase())}></input>
         <input type="submit" value="Login"></input>
       </form>
     </div>

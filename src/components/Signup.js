@@ -21,15 +21,15 @@ function Signup(props) {
     <div>
       <form onSubmit={signupSubmit}>
         <span>Email:</span>
-        <input name="email" type="email" placeholder="Email" onChange={(event) => setEmail(event.target.value)}></input>
+        <input name="email" type="email" placeholder="Email" onChange={(event) => setEmail((event.target.value).toLowerCase())}></input>
         <br/><span>Name:</span>
-        <input name="name" type="string" placeholder="Company Name" onChange={(event) => setName(event.target.value)}></input>
+        <input name="name" type="string" placeholder="Company Name" onChange={(event) => setName((event.target.value).toLowerCase())}></input>
         <br/><span>Address:</span>
-        <input name="address" type="string" placeholder="Company Address" onChange={(event) => setAddress(event.target.value)}></input>
+        <input name="address" type="string" placeholder="Company Address" onChange={(event) => setAddress((event.target.value).toLowerCase())}></input>
         <br/><span>Password:</span>
-        <input name="password" type="password" placeholder="Password" onChange={(event) => setPassword(event.target.value)}></input>
+        <input name="password" type="password" placeholder="Password" onChange={(event) => setPassword((event.target.value).toLowerCase())}></input>
         <br/><span>Password Confirmation:</span>
-        <input name="passwordConfirmation" type="password" placeholder="Password Confirmation" onChange={(event) => setPasswordConfirm(event.target.value)}></input>
+        <input name="passwordConfirmation" type="password" placeholder="Password Confirmation" onChange={(event) => setPasswordConfirm((event.target.value).toLowerCase())}></input>
         <br/><input type="submit" value="Signup"></input>
       </form>
     </div>
