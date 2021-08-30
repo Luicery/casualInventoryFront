@@ -42,10 +42,10 @@ export default {
   deleteItem(locationId, id) {
     return axios.post(`http://localhost:3000/deleteItem`,{id:id, locationId:locationId}, {headers: {"Authorization": token}})
   },
-  tradeItem(recepCompany, recepLocationId, locationId, name, amount) {
-    return axios.post(`http://localhost:3000/tradeItem`,{recepCompany:recepCompany, recepLocationId:recepLocationId, locationId:locationId, name:name, amount:amount}, {headers: {"Authorization": token}})
+  tradeItem(recepCompany, recepLocation, locationId, name, amount) {
+    return axios.post(`http://localhost:3000/tradeItem`,{recepCompany:recepCompany, recepLocation:recepLocation, locationId:locationId, name:name, amount:amount}, {headers: {"Authorization": token}})
   },
-  newItem(locationId, amount, name, price, restockPoint, restockTo, autoRestock) {
-    return axios.post(`http://localhost:3000/items`,{amount:amount, name:name, price:price, locationId:locationId, restockPoint:restockPoint, restockTo:restockTo, autoRestock:autoRestock}, {headers: {"Authorization": token}})
+  newItem(locationId, amount, name, price, restockPoint, restockTo, autoRestock, lastSupplier) {
+    return axios.post(`http://localhost:3000/items`,{amount:amount, name:name, price:price, locationId:locationId, restockPoint:restockPoint, restockTo:restockTo, autoRestock:autoRestock, lastSupplier:lastSupplier}, {headers: {"Authorization": token}})
   }
 }

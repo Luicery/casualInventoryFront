@@ -4,7 +4,8 @@ import {
   Route,
   Link,
   BrowserRouter as Router,
-  Switch
+  Switch,
+  Redirect
 } from "react-router-dom"
 import Navigation from "./Navigation"
 import Home from "./Home"
@@ -23,13 +24,14 @@ function Main() {
       <Router>
         <Switch>
           <Route exact path="/" component={Home}></Route>
-          <Route exact path="/login" component={Login}></Route>
+          {localStorage.jwt !== undefined ? <Redirect from="/login" to="/"/> :<Route exact path="/login" component={Login}></Route>}
           <Route exact path="/test" component={Test}></Route>
-          <Route exact path="/signup" component={Signup}></Route>
-          <Route exact path="/company" component={Company}></Route>
-          <Route exact path="/company/:location" component={Location}></Route>
-          <Route exact path="/company/:location/new" component={NewLocation}></Route>
-          <Route exact path="/company/:location/stock" component={Stock}>{}</Route>
+          {localStorage.jwt !== undefined ? <Redirect from="/signup" to="/"/> :<Route exact path="/signup" component={Signup}></Route>}
+          {localStorage.jwt === undefined ? <Redirect from="/company" to="/"/> : <Route exact path="/company" component={Company}></Route>}
+          {localStorage.jwt === undefined ? <Redirect from="/company/new" to="/"/> : <Route exact path="/company/new" component={NewLocation}></Route>}
+          {localStorage.jwt === undefined ? <Redirect from="/company/:location" to="/"/> : <Route exact path="/company/:location" component={Location}></Route>}
+          // Maybe later if there is a stock page
+          //{localStorage.jwt === undefined ? <Redirect from="/company/:location/stock" to="/"/> : <Route exact path="/company/:location/stock" component={Stock}></Route>}
         </Switch>
       </Router>
     </div>

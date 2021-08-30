@@ -11,6 +11,7 @@ function Login(props) {
     console.log("yes");
     requests.login(email, password).then(res => {
       props.history.push("/");
+      window.location.reload();
     })
   }
   return(
