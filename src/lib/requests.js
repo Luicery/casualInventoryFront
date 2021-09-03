@@ -33,14 +33,17 @@ export default {
   getLocation(locationId) {
     return axios.get(`http://localhost:3000/locationprofile/${locationId}`, {headers: { 'Authorization': token } })
   },
-  newLocation(address, phone, manager, isSupplier) {
-    return axios.post(`http://localhost:3000/locations`, {address:address, phone:phone, manager:manager, is_supplier:isSupplier}, {headers: { 'Authorization': token }})
+  newLocation(address, phone, manager, is_supplier) {
+    return axios.post(`http://localhost:3000/locations`, {address:address, phone:phone, manager:manager, is_supplier:is_supplier}, {headers: { 'Authorization': token }})
   },
   giveItem(locationId, amount, id) {
     return axios.post(`http://localhost:3000/giveItem`, {locationId:locationId, amount:amount, id:id}, {headers: {"Authorization": token}})
   },
   deleteItem(locationId, id) {
     return axios.post(`http://localhost:3000/deleteItem`,{id:id, locationId:locationId}, {headers: {"Authorization": token}})
+  },
+  deleteLocation(locationId) {
+    return axios.delete(`http://localhost:3000/locations/${locationId}`, {headers: {"Authorization": token}})
   },
   tradeItem(recepCompany, recepLocation, locationId, name, amount) {
     return axios.post(`http://localhost:3000/tradeItem`,{recepCompany:recepCompany, recepLocation:recepLocation, locationId:locationId, name:name, amount:amount}, {headers: {"Authorization": token}})

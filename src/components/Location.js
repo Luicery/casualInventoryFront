@@ -65,7 +65,7 @@ function Location(props) {
         <br/>
         <h2>Create a new item</h2>
         <form onSubmit={itemCreate}>
-          Name:<input type="string" onChange={(event) => setName(((event.target.value).toLowerCase()).toLowerCase())}></input><br/>
+          Name:<input type="string" onChange={(event) => setName((event.target.value).toLowerCase())}></input><br/>
           Amount:<input type="string"  onChange={(event) => setAmount((event.target.value).toLowerCase())}></input><br/>
           Price:<input type="string" onChange={(event) => setPrice((event.target.value).toLowerCase())}></input><br/>
           Auto restock:<input type="checkbox" checked={autoRestock} onChange={() => setAutoRestock(autoRestock ? false : true)}></input><br/>
