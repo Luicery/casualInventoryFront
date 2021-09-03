@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react"
 import requests from "../lib/requests"
+import styles from "../css/Location.module.css"
 function Location(props) {
   const [location, setLocation] = useState("");
   const [amount, setAmount] = useState("");

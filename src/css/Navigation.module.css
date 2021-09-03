@@ -1,0 +1,25 @@
+#navigationBarHome {
+  position:fixed;
+  top:10px;
+  width:100%;
+}
+#navigationBarHome > a {
+  text-decoration:none;
+  color:white;
+  padding: 0 10px 0 10px
+}
+#navigationBar {
+  position:fixed;
+  width:100%;
+  padding:10px 10px 10px 0;
+  top:0px;
+  background-color: rgb(62, 165, 238);
+}
+#navigationBar > a {
+  text-decoration:none;
+  color:white;
+  padding:0 10px 0 10px;
+}
+.floatRight {
+  float:right
+}

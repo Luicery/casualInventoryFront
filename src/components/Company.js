@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react"
 import requests from "../lib/requests"
+import styles from "../css/Company.module.css"
 function Company(props) {
   const [company, setCompany] = useState("")
   const [phone, setPhone] = useState("")
@@ -28,7 +29,7 @@ function Company(props) {
   // Remember the , [] means to only do once when the page loads dont delete it
   return(
     <div>
-      <h2>Company</h2>
+      <h2 id={styles.mainSign}>Company</h2>
       {company !== "" && <div>
         Address:{company.company.address}<br/>
         Phone:{company.company.phone}<br/>

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react"
 import requests from "../lib/requests"
+import styles from "../css/Signup.module.css"
 function Signup(props) {
   const [email, setEmail] = useState("")
   const [passwordConfirm, setPasswordConfirm] = useState("")

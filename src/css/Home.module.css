@@ -1,0 +1,10 @@
+#mainSign {
+  background-color: rgb(62, 165, 238);
+  text-align: center;
+  font-size: 6vw;
+  overflow: hidden;
+  line-height: 100vh;
+  height:100vh;
+  color: white;
+  margin:0;
+}
