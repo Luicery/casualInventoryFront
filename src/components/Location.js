@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from "react"
 import requests from "../lib/requests"
-// .catch(err => {props.history.push("/")})
-// console.log(location)
 function Location(props) {
   const [location, setLocation] = useState("");
   const [amount, setAmount] = useState("");
@@ -23,6 +21,10 @@ function Location(props) {
     event.preventDefault();
     requests.changeItem(props.match.params.location, parseInt(amount), event.target.id).then(res => {
       console.log("SUCCESS SUBMIT")
+      console.log(event.target.getAttribute("lastSupplier"))
+      if(props.match.params.location === event.target.getAttribute("lastSupplier")) {
+        console.log("Restocking will not work if you are your own restocker")
+      }
     })
   }
   function itemTrade(event) {
@@ -30,7 +32,7 @@ function Location(props) {
     if(location.stock.find(({name}) => name === event.target.name).amount < amount) {
       return console.log("You dont have enough stock to trade")
     }
-    requests.tradeItem(recepCompany, recepLocation, props.match.params.location, event.target.name, amount).then(res => {
+    requests.giveItem(recepCompany, recepLocation, props.match.params.location, event.target.name, amount).then(res => {
       return console.log("SUCCESS SUBMIT")
     }).catch(error => {
       return console.log(error)
@@ -74,14 +76,14 @@ function Location(props) {
         </form>
         {location.stock.map((x,y) => (
           <div>
-            <h2>{x.name}</h2>
+            <h2>{x.name}   ID:{x.id}</h2>
             Amount:{x.amount}<br/>
             Price:{x.price}<br/>
             Auto restock:{x.autoRestock ? "True" : "False"}<br/>
             {x.autoRestock === true && <span>Restock Minimum:{x.restockPoint}<br/>
             Restock Level:{x.restockTo}<br/></span>}
             Undecided Feature Last supplier:{x.lastSupplier}<br/>
-          <form id={x.id} onSubmit={itemManipulate}>
+          <form id={x.id} lastSupplier={x.lastSupplier} onSubmit={itemManipulate}>
             <input type="string" onChange={(event) => setAmount((event.target.value).toLowerCase())}></input>
             <input type="submit" value="Change item"></input>
           </form><br/>
