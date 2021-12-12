@@ -8,3 +8,14 @@
   color: white;
   margin:0;
 }
+#test {
+  margin:0;
+  background-color: blue;
+  overflow:hidden;
+}
+#testAfter {
+  margin:0;
+  overflow:hidden;
+  background-color: blue;
+  width:100%;
+}

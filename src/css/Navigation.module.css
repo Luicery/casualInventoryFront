@@ -1,25 +1,56 @@
-#navigationBarHome {
-  position:fixed;
-  top:10px;
-  width:100%;
-}
-#navigationBarHome > a {
-  text-decoration:none;
-  color:white;
-  padding: 0 10px 0 10px
-}
 #navigationBar {
+  z-index:2;
   position:fixed;
-  width:100%;
-  padding:10px 10px 10px 0;
-  top:0px;
   background-color: rgb(62, 165, 238);
 }
 #navigationBar > a {
   text-decoration:none;
   color:white;
-  padding:0 10px 0 10px;
+  width:100px;
+  padding:10px 0 10px 0;
+  text-align:center;
+}
+#navigationBar > a:hover, #navigationBarHome > a:hover {
+  background-color:white;
+  color: rgb(62, 165, 238);
+}
+.navigationBarFull {
+  width:100%;
 }
 .floatRight {
-  float:right
+  float:right;
+}
+.floatLeft {
+  float:left;
+}
+#hamborger {
+  padding:2.5px 10px 2.5px 10px;
+}
+#menu {
+  width:30vw;
+  z-index:100;
+  height:100vh;
+}
+#menuClose {
+  color: white;
+  font-size: 2em;
+  padding:10px;
+  display:inline-block;
+}
+#menuName {
+  padding:10px;
+  color:white;
+  font-size: 2em;
+  display:inline-block;
+}
+.menuItem {
+  color:white;
+  font-size:1.5em;
+  text-decoration:none;
+  padding:10px;
+  display:block;
+}
+.menuItem:hover {
+  background-color:white;
+  color: rgb(62, 165, 238);
 }
