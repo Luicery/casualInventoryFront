@@ -4,6 +4,9 @@ import requests from "../lib/requests"
 import styles from "../css/Home.module.css"
 function Home(props) {
   const [test, setTest] = useState("");
+  const [testDrop, setTestDrop] = useState("")
+  const [testDrop2, setTestDrop2] = useState("")
+
   useEffect(() => {
     requests.getCompanies().then(res => {
       console.log(res.data)
@@ -12,12 +15,21 @@ function Home(props) {
   function changeTest(event) {
     test ? setTest(false) : setTest(true);
   }
+  function changeTestDrop(event) {
+    testDrop ? setTestDrop(false) : setTestDrop(true);
+  }
+  function changeTestDrop2(event) {
+    testDrop2 ? setTestDrop2(false) : setTestDrop2(true);
+  }
+  function asd(e) { if(1 === true) {
+    console.log("asd")
+  }}
   return(
       <div class="navigationOpacity">
         <h2 id={styles.mainSign}>Supply Chain Solutions</h2>
         <h2 onClick={() => props.history.push("/company")}>Company Page (CAN CLICK)</h2>
         <div id="repeat"></div>
-        <div>
+        <div id="testingAnimePopOutMenu">
           {test && <Anime
             easing="linear"
             duration={200}
@@ -31,19 +43,50 @@ function Home(props) {
           </Anime>}
           {test === false && <Anime
             easing="linear"
-            width={["50%", 0]}
+            width={[0, "50%"]}
             duration={200}
             delay={(e,i) => i* 100}
             complete= {function(test) {
-              setTest("")
+              setTest()
             }}
+            direction="reverse"
           >
-            <h1 id={styles.testAfter}>Testing</h1>
-            <h1 id={styles.testAfter}>Testing</h1>
-            <h1 id={styles.testAfter}>Testing</h1>
-            <h1 id={styles.testAfter}>Testing</h1>
+            <h1 id={styles.test}>Testing</h1>
+            <h1 id={styles.test}>Testing</h1>
+            <h1 id={styles.test}>Testing</h1>
+            <h1 id={styles.test}>Testing</h1>
           </Anime>}
         </div>
+        {testDrop && <div id="testingAnimeDropDownMenu">
+          {[...Array(4)].map((x,y) => (
+            <div style={{overflow:"hidden"}}>
+              <Anime
+                easing="linear"
+                translateY={["-400%", 0]}
+                duration={y*300}
+                zIndex={-y*1000}
+              >
+                <h1 style={{backgroundColor:"red", margin:0}}  >Test Link {y} Sequential drop down dont understand how it works completely catch up on this</h1>
+              </Anime>
+            </div>
+          ))}
+        </div>}
+
+        {testDrop2 && <div style={{overflow:"hidden"}} id="testingAnimeDropDownMenu2">
+          {[...Array(4)].map((x,y) => (
+            <div>
+              <Anime
+                easing="linear"
+                translateY={[-4*38,0]}
+                duration={1000}
+                >
+                <h1 style={{backgroundColor:"blue", margin:0}}  >Test Link {y} Basic altogether drop down</h1>
+              </Anime>
+            </div>
+          ))}
+        </div>}
+        <h1 onClick={changeTestDrop}>Change Drop Down</h1>
+        <h1 onClick={changeTestDrop2}>Change Drop Down 2</h1>
         <h1 onClick={changeTest}>Change</h1>
 
 
