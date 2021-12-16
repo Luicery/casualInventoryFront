@@ -1,15 +1,37 @@
 * {
   position:relative;
+  margin:0;
 }
 #mainSign {
   background-color: rgb(62, 165, 238);
-  text-align: center;
-  font-size: 6vw;
-  overflow: hidden;
-  line-height: 100vh;
   height:100vh;
   color: white;
   margin:0;
+  line-height: 100vh;
+  font-size: 5vw;
+  overflow:hidden;
+  text-align:center;
+}
+
+#mainSignRight {
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:clip;
+  width:50%;
+  display:inline-block;
+  float:left;
+}
+#mainSignLeft {
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:clip;
+  direction:rtl;
+}
+#mainSignCrop {
+  float:right;
+  display:inline-block;
+  overflow:hidden;
+  width:100%;
 }
 #test {
   margin:0;

@@ -6,7 +6,7 @@ function Home(props) {
   const [test, setTest] = useState("");
   const [testDrop, setTestDrop] = useState("")
   const [testDrop2, setTestDrop2] = useState("")
-
+  const [menuShow, setMenuShow] = useState(false);
   useEffect(() => {
     requests.getCompanies().then(res => {
       console.log(res.data)
@@ -21,12 +21,14 @@ function Home(props) {
   function changeTestDrop2(event) {
     testDrop2 ? setTestDrop2(false) : setTestDrop2(true);
   }
-  function asd(e) { if(1 === true) {
-    console.log("asd")
-  }}
   return(
-      <div class="navigationOpacity">
-        <h2 id={styles.mainSign}>Supply Chain Solutions</h2>
+      <div id="nonNav">
+        <div id={styles.mainSign}>
+          <h2 id={styles.mainSignRight} >Supply Chain Solutions</h2>
+          <div id={styles.mainSignCrop}>
+            <h2 id={styles.mainSignLeft} >Supply Chain Solutions</h2>
+          </div>
+        </div>
         <h2 onClick={() => props.history.push("/company")}>Company Page (CAN CLICK)</h2>
         <div id="repeat"></div>
         <div id="testingAnimePopOutMenu">
@@ -66,7 +68,7 @@ function Home(props) {
                 duration={y*300}
                 zIndex={-y*1000}
               >
-                <h1 style={{backgroundColor:"red", margin:0}}  >Test Link {y} Sequential drop down dont understand how it works completely catch up on this</h1>
+                <h1 style={{backgroundColor:"red", margin:0}}  >Test Link {y} Sequential drop down now understand the divs skip z index by overflow</h1>
               </Anime>
             </div>
           ))}
