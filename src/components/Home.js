@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react"
 import Anime from 'react-anime';
 import requests from "../lib/requests"
 import styles from "../css/Home.module.css"
+import chain from "../assets/chain.png"
 function Home(props) {
   const [test, setTest] = useState("");
   const [testDrop, setTestDrop] = useState("")
@@ -24,13 +25,47 @@ function Home(props) {
   return(
       <div id="nonNav">
         <div id={styles.mainSign}>
-          <h2 id={styles.mainSignRight} >Supply Chain Solutions</h2>
-          <div id={styles.mainSignCrop}>
-            <h2 id={styles.mainSignLeft} >Supply Chain Solutions</h2>
+          <div id={styles.mainSignLeftHolder}>
+            <Anime
+              translateX={["100%", 0]}
+              duration={1000}
+              easing="linear"
+            >
+              <h2 id={styles.mainSignLeft} >Supply Cha</h2>
+            </Anime>
+          </div>
+          <div class={styles.chainHolder}>
+            <Anime
+              translateX={["-100%",0]}
+              duration={1000}
+              easing="linear"
+            >
+              <img id={styles.chainLeft} src={chain}></img>
+            </Anime>
+            Ugly chain couldn't find one with white outlines (if see replace)
+            This is basically a comment
+          </div>
+          <div id={styles.mainSignRightHolder}>
+            <Anime
+              translateX={["-100%", 0]}
+              duration={1000}
+              easing="linear"
+            >
+              <h2 id={styles.mainSignRight} >in Solutions</h2>
+            </Anime>
+          </div>
+          <div class={styles.chainHolder}>
+            <Anime
+              translateX={["100%",0]}
+              duration={1000}
+              easing="linear"
+            >
+              <img id={styles.chainRight} src={chain}></img>
+            </Anime>
           </div>
         </div>
         <h2 onClick={() => props.history.push("/company")}>Company Page (CAN CLICK)</h2>
-        <div id="repeat"></div>
+
         <div id="testingAnimePopOutMenu">
           {test && <Anime
             easing="linear"
@@ -38,35 +73,53 @@ function Home(props) {
             delay={(e,i) => i* 100}
             width={[0,"50%"]}
           >
-            <h1 id={styles.test}>Testing</h1>
-            <h1 id={styles.test}>Testing</h1>
-            <h1 id={styles.test}>Testing</h1>
-            <h1 id={styles.test}>Testing</h1>
+            <h1 class={styles.test}>Testing</h1>
+            <h1 class={styles.test}>Testing</h1>
+            <h1 class={styles.test}>Testing</h1>
+            <h1 class={styles.test}>Testing</h1>
           </Anime>}
           {test === false && <Anime
             easing="linear"
             width={[0, "50%"]}
             duration={200}
-            delay={(e,i) => i* 100}
+            delay={(e,i) => i*100}
             complete= {function(test) {
-              setTest()
+              setTest("")
             }}
             direction="reverse"
           >
-            <h1 id={styles.test}>Testing</h1>
-            <h1 id={styles.test}>Testing</h1>
-            <h1 id={styles.test}>Testing</h1>
-            <h1 id={styles.test}>Testing</h1>
+            <h1 class={styles.test}>Testing</h1>
+            <h1 class={styles.test}>Testing</h1>
+            <h1 class={styles.test}>Testing</h1>
+            <h1 class={styles.test}>Testing</h1>
           </Anime>}
         </div>
-        {testDrop && <div id="testingAnimeDropDownMenu">
+
+        {testDrop === true && <div id="testingAnimeDropDownMenu">
           {[...Array(4)].map((x,y) => (
             <div style={{overflow:"hidden"}}>
               <Anime
                 easing="linear"
                 translateY={["-400%", 0]}
                 duration={y*300}
-                zIndex={-y*1000}
+              >
+                <h1 style={{backgroundColor:"red", margin:0}}  >Test Link {y} Sequential drop down now understand the divs skip z index by overflow</h1>
+              </Anime>
+            </div>
+          ))}
+        </div>}
+
+        {testDrop === false && <div id="testingAnimeDropDownMenu">
+          {[...Array(4)].map((x,y) => (
+            <div style={{overflow:"hidden"}}>
+              <Anime
+                delay={(e,i) => i*300}
+                easing="linear"
+                translateY={[0, "-100%"]}
+                duration={300}
+                complete= {function(test) {
+                  setTestDrop("")
+                }}
               >
                 <h1 style={{backgroundColor:"red", margin:0}}  >Test Link {y} Sequential drop down now understand the divs skip z index by overflow</h1>
               </Anime>
@@ -94,7 +147,7 @@ function Home(props) {
 
         this is for developer side for anime i guess Ignore large fat text or lorem ipsum
 
-        <Anime translateX={50}>
+        <Anime translateX={0}>
           <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In massa tempor nec feugiat nisl. Amet risus nullam eget felis eget nunc. Nunc mi ipsum faucibus vitae aliquet nec ullamcorper sit amet. Elit pellentesque habitant morbi tristique senectus. Amet luctus venenatis lectus magna fringilla urna porttitor rhoncus dolor. Lacus vel facilisis volutpat est velit egestas dui id ornare. Tellus at urna condimentum mattis pellentesque id. Magna fringilla urna porttitor rhoncus dolor purus non. Mollis aliquam ut porttitor leo a. Rhoncus mattis rhoncus urna neque. Ultrices in iaculis nunc sed augue lacus.
 
           Luctus venenatis lectus magna fringilla urna porttitor rhoncus dolor. Mauris commodo quis imperdiet massa tincidunt nunc pulvinar. Egestas purus viverra accumsan in nisl nisi scelerisque eu. Purus semper eget duis at tellus. Velit aliquet sagittis id consectetur. Etiam erat velit scelerisque in dictum non consectetur. Etiam dignissim diam quis enim lobortis scelerisque fermentum dui faucibus. Odio eu feugiat pretium nibh ipsum. Arcu felis bibendum ut tristique et egestas quis ipsum suspendisse. Scelerisque viverra mauris in aliquam sem. Sed id semper risus in hendrerit gravida rutrum quisque. Tristique senectus et netus et malesuada. Aliquet lectus proin nibh nisl condimentum id venenatis a condimentum.

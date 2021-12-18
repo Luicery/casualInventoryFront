@@ -10,30 +10,49 @@
   line-height: 100vh;
   font-size: 5vw;
   overflow:hidden;
-  text-align:center;
 }
 
-#mainSignRight {
-  overflow:hidden;
-  white-space:nowrap;
-  text-overflow:clip;
-  width:50%;
-  display:inline-block;
-  float:left;
-}
 #mainSignLeft {
-  overflow:hidden;
+  /* Previous version of main sign test */
+  /* overflow:hidden;
   white-space:nowrap;
-  text-overflow:clip;
-  direction:rtl;
+  text-overflow:clip; */
+  /* Necessary for the Anime JS translateX Dont delete dis*/
 }
-#mainSignCrop {
-  float:right;
-  display:inline-block;
+#mainSignLeftHolder {
+  text-align:right;
   overflow:hidden;
-  width:100%;
+  float:left;
+  width:50%;
+  display:inline;
 }
-#test {
+#mainSignRight {
+  /* overflow:hidden;
+  white-space:nowrap;
+  text-overflow:clip; */
+  /* Necessary for the Anime JS translateX */
+}
+#mainSignRightHolder {
+  text-align:left;
+  direction:rtl;
+  overflow:hidden;
+  width:50%;
+  display:inline;
+  float:right;
+}
+#chainLeft {
+ width:50vw;
+ top:8.5vw;
+}
+#chainRight {
+ width:50vw;
+ top:8.5vw;
+ left:100%;
+}
+.chainHolder {
+  position:absolute;
+}
+.test {
   margin:0;
   background-color: blue;
   overflow:hidden;
