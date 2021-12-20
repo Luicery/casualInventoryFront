@@ -28,7 +28,7 @@ function Company(props) {
   }
   // Remember the , [] means to only do once when the page loads dont delete it
   return(
-    <div>
+    <div class="nonNav" id={styles.companyHolder}>
       <h2 id={styles.mainSign}>Company</h2>
       {company !== "" && <div>
         Address:{company.company.address}<br/>

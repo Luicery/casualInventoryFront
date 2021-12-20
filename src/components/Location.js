@@ -54,7 +54,7 @@ function Location(props) {
     })
   }
   return(
-    <div>
+    <div class="nonNav" id={styles.locationHolder}>
       <span onClick={() => props.history.push("/company")}>Back to company locations</span>
       {location !== "" && <div>
         <h2>Location of company {location.parentCompany.name}</h2>

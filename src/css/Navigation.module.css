@@ -1,16 +1,16 @@
 * {
   position:relative;
 }
+/* Many of these may be from previous versions */
 #navigationBar {
+  top:0;
   z-index:2;
   position:fixed;
-  background-color: rgb(62, 165, 238);
 }
 #navigationBar > a {
   text-decoration:none;
   color:white;
   width:100px;
-  padding:10px 0 10px 0;
   text-align:center;
 }
 #navigationBar > a:hover, #navigationBarHome > a:hover {
@@ -18,7 +18,9 @@
   color: rgb(62, 165, 238);
 }
 .navigationBarFull {
+  background-color: rgb(62, 165, 238);
   width:100%;
+  height:8vh;
 }
 .floatRight {
   float:right;
@@ -27,7 +29,9 @@
   float:left;
 }
 #hamborger {
-  padding:2.5px 10px 2.5px 10px;
+  width:6vh;
+  height:6vh;
+  padding:1vh;
 }
 #menu {
   width:30vw;

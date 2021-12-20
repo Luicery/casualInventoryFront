@@ -16,7 +16,7 @@ function Login(props) {
     })
   }
   return(
-    <div>
+    <div class="nonNav" id={styles.loginHolder}>
       <form onSubmit={loginSubmit}>
         <span>Email:</span>
         <input name="email" type="email" placeholder="Email" onChange={(event) => setEmail((event.target.value).toLowerCase())}></input>

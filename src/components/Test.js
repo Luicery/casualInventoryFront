@@ -28,7 +28,7 @@ function Test() {
 
   return(
     <div>
-      THE GREAT TEST PAGE
+      THE GREAT TEST PAGE FOR CREATING STUFF AND SHOULD DELETE
       <div id="repeatItem"></div><br/>
       <div id="repeatStock"></div>
     </div>

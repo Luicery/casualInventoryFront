@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react"
 import requests from "../lib/requests"
+import styles from "../css/NewLocation.module.css"
 function NewLocation() {
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
@@ -16,7 +17,8 @@ function NewLocation() {
     })
   }
   return(
-    <div>
+    <div class="nonNav" id={styles.newLocationHolder}>
+      Testing TESTING and partially given up as this is a testing project now
       <form onSubmit={newLocationSubmit}>
         <span>Manager:</span>
         <input name="manager" type="string" placeholder="Manager name" onChange={(event) => setAddress((event.target.value).toLowerCase())}></input>

@@ -3,23 +3,28 @@ import styles from "../css/Navigation.module.css"
 import hamborger from "../assets/hamborger.png"
 import Anime from "react-anime"
 function Navigation(props) {
-  const [menuShow, setMenuShow] = useState("");
-  const [showBurger, setShowBurger] = useState(true)
+  const [menuShow, setMenuShow] = useState(true);
+  const [showBurger, setShowBurger] = useState(true);
+  const [procAnimeIn, setProcAnimeIn] = useState(false);
+  const [procAnimeOut, setProcAnimeOut] = useState(false);
   const logout = () => {
     localStorage.clear("jwt");
   };
   function menuShowFunc(event) {
-    setMenuShow(true);
+    setProcAnimeOut(true);
+    setMenuShow(false);
     setShowBurger(false);
-    document.getElementById("nonNav").onclick = menuCloseFunc
+    document.getElementsByClassName("nonNav")[0].onclick = menuCloseFunc
   };
   function menuCloseFunc(event) {
-    setMenuShow(false);
+    setProcAnimeOut(false);
+    setProcAnimeIn(true);
   };
   return(
-    <nav class={menuShow ? "" : styles.navigationBarFull} id={styles.navigationBar}>
-      {showBurger === true && <img id={styles.hamborger} src={hamborger} width="40px" height="40px" onClick={menuShowFunc}></img>}
-      {menuShow === true && <div>
+    <nav class={menuShow ? styles.navigationBarFull : ""} id={styles.navigationBar}>
+
+      {showBurger === true && <img id={styles.hamborger} src={hamborger} onClick={menuShowFunc}></img>}
+      {procAnimeOut === true && <div>
       <Anime
         easing="linear"
         duration={200}
@@ -33,7 +38,7 @@ function Navigation(props) {
         {localStorage.jwt !== undefined && <a id="logoutLink" class={styles.menuItem} href="/" onClick={logout}>Logout</a>}
       </Anime>
       </div>}
-        {menuShow === false && <div>
+        {procAnimeIn === true && <div>
         <Anime
           easing="linear"
           duration={200}
@@ -41,7 +46,9 @@ function Navigation(props) {
           translateX={["-100%", 0]}
           direction="reverse"
           complete= {function() {
-            setShowBurger(true)
+            setProcAnimeIn(false);
+            setShowBurger(true);
+            setMenuShow(true);
           }}
         >
           <span id={styles.menuName}>Supply Chain Solutions</span>

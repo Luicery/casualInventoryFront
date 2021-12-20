@@ -23,7 +23,7 @@ function Home(props) {
     testDrop2 ? setTestDrop2(false) : setTestDrop2(true);
   }
   return(
-      <div id="nonNav">
+      <div class="nonNav">
         <div id={styles.mainSign}>
           <div id={styles.mainSignLeftHolder}>
             <Anime

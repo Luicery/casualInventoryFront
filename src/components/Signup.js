@@ -19,7 +19,7 @@ function Signup(props) {
     })
   }
   return(
-    <div>
+    <div class="nonNav" id={styles.signUpHolder}>
       <form onSubmit={signupSubmit}>
         <span>Email:</span>
         <input name="email" type="email" placeholder="Email" onChange={(event) => setEmail((event.target.value).toLowerCase())}></input>
