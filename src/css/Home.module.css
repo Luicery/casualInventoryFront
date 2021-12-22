@@ -67,3 +67,25 @@
   background-color: red;
   margin:0px;
 }
+#tripleHolder {
+  margin:5vh;
+  display:flex;
+  justify-content: space-evenly;
+  gap:20px;
+}
+.innerTripHolder {
+  display:flex;
+  flex-direction: column;
+  background-color: rgb(62, 165, 238);
+  border-radius:50px;
+  overflow:hidden
+}
+.innerTripHolderDiv {
+  text-align:justify;
+  margin:25px;
+}
+.innerTripHolderTitle {
+  color:white;
+  text-align:center;
+  margin-top:25px;
+}
