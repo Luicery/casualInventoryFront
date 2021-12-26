@@ -7,12 +7,20 @@ function Home(props) {
   const [test, setTest] = useState("");
   const [testDrop, setTestDrop] = useState("")
   const [testDrop2, setTestDrop2] = useState("")
+  const [number, setNumber] = useState(0)
+  const [christmas, setChristmas] = useState(true)
   const [menuShow, setMenuShow] = useState(false);
   useEffect(() => {
     requests.getCompanies().then(res => {
       console.log(res.data)
     })
-  }, [])
+  }, []);
+  useEffect(() => {
+    const asd = setInterval(() => {
+      christmas ? setChristmas(false) : setChristmas(true);
+    },1000);
+    return () => {clearInterval(asd)}
+  }, [christmas])
   function changeTest(event) {
     test ? setTest(false) : setTest(true);
   }
@@ -166,8 +174,14 @@ function Home(props) {
         <h1 onClick={changeTestDrop}>Change Drop Down</h1>
         <h1 onClick={changeTestDrop2}>Change Drop Down 2</h1>
         <h1 onClick={changeTest}>Change</h1>
+        <div id={styles.merryHolder}>
+          <div id={styles.merryChristmas}>Merry Christmas</div>
+          {christmas === true && <div><div id={styles.merryLeftmas} class={styles.merryRed}/>
+          <div id={styles.merryRightmas} class={styles.merryGreen}/></div>}
 
-
+          {christmas === false && <div><div id={styles.merryLeftmas} class={styles.merryGreen}/>
+          <div id={styles.merryRightmas} class={styles.merryRed}/></div>}
+        </div>
         this is for developer side for anime i guess Ignore large fat text or lorem ipsum
 
         <div id={styles.tripleHolder}>
