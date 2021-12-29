@@ -78,23 +78,15 @@
   flex-direction: column;
   background-color: rgb(62, 165, 238);
   border-radius:50px;
-  overflow:hidden
+  overflow:hidden;
 }
 .innerTripHolderDiv {
   text-align:justify;
-  margin:25px;
 }
 .innerTripHolderTitle {
+
   color:white;
   text-align:center;
-  margin-top:25px;
-}
-#merryHolder {
-  height:300px;
-  text-align:center;
-  line-height:300px;
-  margin:0;
-  overflow:hidden;
 }
 #merryRightmas {
   position:relative;
@@ -116,7 +108,7 @@
 .merryGreen {
   background: radial-gradient(circle, rgba(0,255,0,0.8) 0%, rgba(0,0,0,0) 90%);
 }
-#merryChristmas {
+.merryChristmasLetter {
   font-size:100px;
   color:transparent;
   background-clip:text;
@@ -127,4 +119,23 @@
     green 20px,
     green 40px
   )
+}
+#merryChristmas div {
+  display:inline-block;
+}
+#merryChristmas {
+  height:300px;
+  text-align:center;
+  line-height:300px;
+  margin:0;
+  overflow:hidden;
+}
+
+#merryBell {
+  margin-top:10px;
+  margin-left:-50px;
+  left:50%;
+  position:absolute;
+  height:100px;
+  width:100px;
 }

@@ -3,6 +3,8 @@ import Anime from 'react-anime';
 import requests from "../lib/requests"
 import styles from "../css/Home.module.css"
 import chain from "../assets/chain.png"
+import bell from "../assets/Bell.png"
+import MerryChristmasLights from "./MerryChristmasLights.js"
 function Home(props) {
   const [test, setTest] = useState("");
   const [testDrop, setTestDrop] = useState("")
@@ -15,12 +17,7 @@ function Home(props) {
       console.log(res.data)
     })
   }, []);
-  useEffect(() => {
-    const asd = setInterval(() => {
-      christmas ? setChristmas(false) : setChristmas(true);
-    },1000);
-    return () => {clearInterval(asd)}
-  }, [christmas])
+
   function changeTest(event) {
     test ? setTest(false) : setTest(true);
   }
@@ -174,20 +171,53 @@ function Home(props) {
         <h1 onClick={changeTestDrop}>Change Drop Down</h1>
         <h1 onClick={changeTestDrop2}>Change Drop Down 2</h1>
         <h1 onClick={changeTest}>Change</h1>
-        <div id={styles.merryHolder}>
-          <div id={styles.merryChristmas}>Merry Christmas</div>
-          {christmas === true && <div><div id={styles.merryLeftmas} class={styles.merryRed}/>
-          <div id={styles.merryRightmas} class={styles.merryGreen}/></div>}
-
-          {christmas === false && <div><div id={styles.merryLeftmas} class={styles.merryGreen}/>
-          <div id={styles.merryRightmas} class={styles.merryRed}/></div>}
-        </div>
+        Solved the animation being reset by changes of state solution
+        is to seperate the change states and the animations as the
+        rerender of the states toggles the animation again for X
+        number of time the X number of times is unknown and random
+        to my knowledge will find out for future reference
+          <div id={styles.merryChristmas}>
+            <img src={bell} id={styles.merryBell}></img>
+            <Anime
+              direction="alternate"
+              loop={true}
+              easing="easeOutElastic"
+              scale={[0,1]}
+              duration={1000}
+              delay={(e,i) => i*200}
+              endDelay={500}
+            >
+              <span class={styles.merryChristmasLetter}>M</span>
+              <span class={styles.merryChristmasLetter}>e</span>
+              <span class={styles.merryChristmasLetter}>r</span>
+              <span class={styles.merryChristmasLetter}>r</span>
+              <span class={styles.merryChristmasLetter}>y</span>
+              <span class={styles.merryChristmasLetter}>&nbsp;C</span>
+              <span class={styles.merryChristmasLetter}>h</span>
+              <span class={styles.merryChristmasLetter}>r</span>
+              <span class={styles.merryChristmasLetter}>i</span>
+              <span class={styles.merryChristmasLetter}>s</span>
+              <span class={styles.merryChristmasLetter}>t</span>
+              <span class={styles.merryChristmasLetter}>m</span>
+              <span class={styles.merryChristmasLetter}>a</span>
+              <span class={styles.merryChristmasLetter}>s</span>
+            </Anime>
+            <MerryChristmasLights/>
+          </div>
         this is for developer side for anime i guess Ignore large fat text or lorem ipsum
-
         <div id={styles.tripleHolder}>
           <div class={styles.innerTripHolder}>
-            <h2 class={styles.innerTripHolderTitle}>Left side</h2>
-            <div class={styles.innerTripHolderDiv}>Rubbish gibberish text that means nothing at all and is just here to fill up space and I couldn't be bothered to find the proper lorem ipsum so i just started typing as if a rambling is occuring in text till it is long enough to satisfy a small paragraph to replace a lorem ipsum</div>
+          <Anime
+            translateX={["-1000px",0]}
+            duration={2000}
+            borderRadius={"500px"}
+            width={"50px"}
+            height={"50px"}
+            fontSize={"0px"}
+          >
+                <h2 class={styles.innerTripHolderTitle}>Left side</h2>
+                <div class={styles.innerTripHolderDiv}>Rubbish gibberish text that means nothing at all and is just here to fill up space and I couldn't be bothered to find the proper lorem ipsum so i just started typing as if a rambling is occuring in text till it is long enough to satisfy a small paragraph to replace a lorem ipsum</div>
+          </Anime>
           </div>
           <div class={styles.innerTripHolder}>
             <h2 class={styles.innerTripHolderTitle}>Center</h2>
