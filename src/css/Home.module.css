@@ -1,6 +1,7 @@
 * {
   position:relative;
   margin:0;
+
 }
 #mainSign {
   background-color: rgb(62, 165, 238);
@@ -11,7 +12,6 @@
   font-size: 5vw;
   overflow:hidden;
 }
-
 #mainSignLeft {
   /* Previous version of main sign test */
   /* overflow:hidden;
@@ -71,21 +71,22 @@
   margin:5vh;
   display:flex;
   justify-content: space-evenly;
-  gap:20px;
+  gap:5vw;
+  color:transparent;
 }
 .innerTripHolder {
-  display:flex;
-  flex-direction: column;
   background-color: rgb(62, 165, 238);
   border-radius:50px;
   overflow:hidden;
+  font-size:10px;
 }
 .innerTripHolderDiv {
+  width:7.5vw;
+  height:7.5vw;
   text-align:justify;
 }
 .innerTripHolderTitle {
-
-  color:white;
+  font-weight:bold;
   text-align:center;
 }
 #merryRightmas {
@@ -130,7 +131,6 @@
   margin:0;
   overflow:hidden;
 }
-
 #merryBell {
   margin-top:10px;
   margin-left:-50px;

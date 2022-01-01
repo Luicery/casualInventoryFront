@@ -206,27 +206,102 @@ function Home(props) {
           </div>
         this is for developer side for anime i guess Ignore large fat text or lorem ipsum
         <div id={styles.tripleHolder}>
-          <div class={styles.innerTripHolder}>
           <Anime
             translateX={["-1000px",0]}
             duration={2000}
-            borderRadius={"500px"}
-            width={"50px"}
-            height={"50px"}
-            fontSize={"0px"}
           >
-                <h2 class={styles.innerTripHolderTitle}>Left side</h2>
+            <div class={styles.innerTripHolder}>
+              <Anime
+                fontSize={[0,"25px"]}
+                duration={1000}
+                delay={(e) => 2000}
+                marginTop={[0,"15px"]}
+              >
+                <div class={styles.innerTripHolderTitle}>Left side</div>
+              </Anime>
+              <Anime
+                fontSize={[0,"15px"]}
+                duration={1000}
+                delay={(e) => 2000}
+                width={["7.5vw","auto"]}
+                height={["7.5vw","auto"]}
+                margin={"30px"}
+                begin={function() {
+                  setTimeout(function() {
+                    document.getElementsByClassName(styles.innerTripHolderDiv)[0].style.width = "auto"
+                    document.getElementsByClassName(styles.innerTripHolderDiv)[0].style.height = "auto"
+                  },2000)
+                  setTimeout(function() {
+                    document.getElementById(styles.tripleHolder).style.color = "white"
+                  }, 3300)
+                }}
+              >
                 <div class={styles.innerTripHolderDiv}>Rubbish gibberish text that means nothing at all and is just here to fill up space and I couldn't be bothered to find the proper lorem ipsum so i just started typing as if a rambling is occuring in text till it is long enough to satisfy a small paragraph to replace a lorem ipsum</div>
+              </Anime>
+            </div>
           </Anime>
-          </div>
-          <div class={styles.innerTripHolder}>
-            <h2 class={styles.innerTripHolderTitle}>Center</h2>
-            <div class={styles.innerTripHolderDiv}>Rubbish gibberish text that means nothing at all and is just here to fill up space and I couldn't be bothered to find the proper lorem ipsum so i just started typing as if a rambling is occuring in text till it is long enough to satisfy a small paragraph to replace a lorem ipsum</div>
-          </div>
-          <div class={styles.innerTripHolder}>
-            <h2 class={styles.innerTripHolderTitle}>Right side</h2>
-            <div class={styles.innerTripHolderDiv}>Rubbish gibberish text that means nothing at all and is just here to fill up space and I couldn't be bothered to find the proper lorem ipsum so i just started typing as if a rambling is occuring in text till it is long enough to satisfy a small paragraph to replace a lorem ipsum</div>
-          </div>
+          <Anime
+            translateY={["1000px",0]}
+            duration={2000}
+          >
+            <div class={styles.innerTripHolder}>
+              <Anime
+                fontSize={[0,"25px"]}
+                duration={1000}
+                delay={(e) => 2000}
+                marginTop={[0,"15px"]}
+              >
+                <div class={styles.innerTripHolderTitle}>Center</div>
+              </Anime>
+              <Anime
+                fontSize={[0,"15px"]}
+                duration={1000}
+                delay={(e) => 2000}
+                width={["7.5vw","auto"]}
+                height={["7.5vw","auto"]}
+                margin={"30px"}
+                begin={function() {
+                  setTimeout(function() {
+                    document.getElementsByClassName(styles.innerTripHolderDiv)[1].style.width = "auto"
+                    document.getElementsByClassName(styles.innerTripHolderDiv)[1].style.height = "auto"
+                  },2000)
+                }}
+              >
+                <div class={styles.innerTripHolderDiv}>Rubbish gibberish text that means nothing at all and is just here to fill up space and I couldn't be bothered to find the proper lorem ipsum so i just started typing as if a rambling is occuring in text till it is long enough to satisfy a small paragraph to replace a lorem ipsum</div>
+              </Anime>
+            </div>
+          </Anime>
+          <Anime
+            translateX={["1000px",0]}
+            duration={2000}
+          >
+            <div class={styles.innerTripHolder}>
+              <Anime
+                fontSize={[0,"25px"]}
+                duration={1500}
+                delay={(e) => 2000}
+                marginTop={[0,"15px"]}
+              >
+                <div class={styles.innerTripHolderTitle}>Right side</div>
+              </Anime>
+              <Anime
+                fontSize={[0,"15px"]}
+                duration={1000}
+                delay={(e) => 2000}
+                width={["7.5vw","auto"]}
+                height={["7.5vw","auto"]}
+                margin={"30px"}
+                begin={function() {
+                  setTimeout(function() {
+                    document.getElementsByClassName(styles.innerTripHolderDiv)[2].style.width = "auto"
+                    document.getElementsByClassName(styles.innerTripHolderDiv)[2].style.height = "auto"
+                  },2000)
+                }}
+              >
+                <div class={styles.innerTripHolderDiv}>Rubbish gibberish text that means nothing at all and is just here to fill up space and I couldn't be bothered to find the proper lorem ipsum so i just started typing as if a rambling is occuring in text till it is long enough to satisfy a small paragraph to replace a lorem ipsum</div>
+              </Anime>
+            </div>
+          </Anime>
         </div>
       </div>
   )
